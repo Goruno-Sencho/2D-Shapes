@@ -5,6 +5,7 @@ float smallerDisplayDimension;
 float leftEyeX, leftEyeY, eyeDiameter;
 float rightEyeX, rightEyeY, rightDiameter;
 float mouthX1, mouthY1, mouthX2, mouthY2;
+float xnose1, ynose1, xnose2, ynose2, xnose3, ynose3;
 //
 //Display Geomtery
 fullScreen(); 
@@ -39,7 +40,7 @@ leftEyeY = displayHeight*1/4;
 rightEyeY = leftEyeY;
 eyeDiameter = smallerDisplayDimension*1/4;
 mouthX1 = leftEyeX;
-mouthY1 = displayWidth*3/4;
+mouthY1 = displayHeight*3/4;
 mouthX2 = rightEyeX; 
 mouthY2 = mouthY1;
 //
@@ -60,6 +61,7 @@ ellipse(rightEyeX, rightEyeY, eyeDiameter, eyeDiameter);
 //
 //Nose
 //rect();
+triangle(xnose1, ynose1, xnose2, ynose2, xnose3, ynose3);
 //
 //Mouth
 //rect();
