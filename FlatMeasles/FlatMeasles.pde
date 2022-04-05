@@ -38,7 +38,7 @@ rectFaceX = (appWidth*1/2) - (smallerDisplayDimension*1/2);
 rectFaceY = appHeight*0;
 faceDiameter = smallerDisplayDimension;
 leftEyeX = appWidth*2/5 ;
-rightEyeX = appWidth*2.6/4;
+rightEyeX = appWidth*2.5/4;
 leftEyeY = appHeight*1/4;
 rightEyeY = leftEyeY;
 eyeDiameter = smallerDisplayDimension*1/4;
@@ -53,6 +53,9 @@ xnose2 = faceX - leftEyeY*1/2;
 ynose2 = faceY ;
 xnose3 = faceX + leftEyeY*1/2;
 ynose3 = faceY ;
+
+
+
 //
 //FaceDiameter = ;
 //
@@ -60,9 +63,11 @@ ynose3 = faceY ;
 //Center a circle on display orientation
 rect(rectFaceX, rectFaceY, rectFaceWidth, rectFaceHeight);
 ellipse(faceX, faceY, faceDiameter, faceDiameter);
+
 //
 //Left Eye
 //rect();
+rect(leftEyeX-eyeDiameter*1/2);
 ellipse(leftEyeX, leftEyeY, eyeDiameter, eyeDiameter);
 //
 //Right Eye
@@ -71,20 +76,27 @@ ellipse(rightEyeX, rightEyeY, eyeDiameter, eyeDiameter);
 //
 //Nose
 //rect();
+rect(xnose2, ynose1, xnose3-xnose2, ynose3-ynose1);
 triangle(xnose1, ynose1, xnose2, ynose2, xnose3, ynose3);
 //
 //Mouth
 //rect();
-strokeWeight(mouthOpen); //testing: 100=400/4, mouthOpen
+int mouthWidth = int ( mouthX2 - mouthX1 );
+int mouthHeight = mouthOpen;
+rect(mouthX1-mouthOpen*1/2, mouthY1-mouthOpen*1/2, mouthWidth+mouthOpen, mouthHeight);
+strokeWeight(mouthOpen); //testing: 100=400/4, mouthOpen=height*1/4
 line(mouthX1, mouthY1, mouthX2, mouthY2);
 strokeWeight(reset); // reset to 1 pixel
+
 //Measle
 float measleDiameter = random( smallerDisplayDimension*1/100, smallerDisplayDimension*1/25);
 float measleRadius = measleDiameter*1/2;
-println ( measleRadius );
 float measleX = random( rectFaceX+measleRadius, ((rectFaceX+rectFaceWidth ) - measleRadius) );
 float measleY = random( rectFaceY+measleRadius, ((rectFaceY+rectFaceHeight) - measleRadius) ); //Very small measle
-color green=#00FF0E, measleColour=green, whiteReset=#000000; //Range of measle size: small=*1/100
+Boolean nightMode=false; 
+//color green=#00FF0E, measleColour=green, whiteReset=#000000; //Range of measle size: small=*1/100
+color measleColour = ( nightMode==false ) ? color ( 255, random(0,50), random(120) ) : color ( 255, random(0,50), 0) ; //ternary operator for day:night
+color whiteReset=#000000;
 //rect();
 //random values given other variabls (similar to button code)
 noStroke();
