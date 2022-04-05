@@ -66,12 +66,11 @@ ellipse(faceX, faceY, faceDiameter, faceDiameter);
 
 //
 //Left Eye
-//rect();
-rect(leftEyeX-eyeDiameter*1/2);
+rect(leftEyeX-eyeDiameter*1/2, leftEyeY-eyeDiameter*1/2, eyeDiameter, eyeDiameter);
 ellipse(leftEyeX, leftEyeY, eyeDiameter, eyeDiameter);
 //
 //Right Eye
-//rect();
+rect(rightEyeX-eyeDiameter*1/2, rightEyeY-eyeDiameter*1/2, eyeDiameter, eyeDiameter);
 ellipse(rightEyeX, rightEyeY, eyeDiameter, eyeDiameter);
 //
 //Nose
