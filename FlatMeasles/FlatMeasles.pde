@@ -96,7 +96,12 @@ Boolean nightMode=false;
 //color green=#00FF0E, measleColour=green, whiteReset=#000000; //Range of measle size: small=*1/100
 color measleColour = ( nightMode==false ) ? color ( 255, random(0,50), random(120) ) : color ( 255, random(0,50), 0) ; //ternary operator for day:night
 color whiteReset=#000000;
-//rect();
+//
+float measleRectX = measleX-measleDiameter*1/2;
+float measleRectY = measleY-measleDiameter*1/2;
+float measleWidth = measleDiameter;
+float measleHeight = measleDiameter;
+rect( measleRectX, measleRectY, measleWidth, measleHeight );
 //random values given other variabls (similar to button code)
 noStroke();
 fill(measleColour);
