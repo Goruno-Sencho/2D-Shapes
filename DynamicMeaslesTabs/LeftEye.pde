@@ -1,0 +1,9 @@
+//Global Variables
+float leftEyeX, leftEyeY, eyeDiameter;
+void leftEyeDraw() 
+{
+  //Left Eye
+//rect();
+//rect(leftEyeX-eyeDiameter*1/2, leftEyeY-eyeDiameter*1/2, eyeDiameter, eyeDiameter);
+ellipse(leftEyeX, leftEyeY, eyeDiameter, eyeDiameter);
+}//End leftEyeDraw

@@ -1,6 +1,7 @@
+
 void population() 
 {
-  //if (width>= height) {println("Landscape or Square");
+ //if (width>= height) {println("Landscape or Square");
   smallerDisplayDimension = appHeight; //Always in Landscape
   reset = smallerDisplayDimension / smallerDisplayDimension;
   faceX = appWidth*1/2;
