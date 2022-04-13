@@ -9,14 +9,16 @@ float rightEyeX, rightEyeY, rightDiameter;
 float mouthX1, mouthY1, mouthX2, mouthY2;
 float xnose1, ynose1, xnose2, ynose2, xnose3, ynose3;
 PImage mouthpic1;
-String title = "press F!!!";
-String No1 = "Reset!";
+String title = "Quit";
 float titleX, titleY, titleWidth, titleHeight;
 PFont titleFont;
-color purple=#4B351B, resetDefaultInk=#4B351B;
+color purple=#B7B3B3, resetDefaultInk=#B7B3B3;
 color yellow=#F8FC03, Porple=#FA00F6, whiteReset=#FFFFFF, blackReset=#000000;
 color yellowNightMode=#F8FC00, purpleNightMode=#FA0096; 
 Boolean nightMode=false;
+float quitButtonX, quitButtonY, quitButtonWidth, quitButtonHeight, quitButtonA, quitButtonB, quitButtonAWidth, quitButtonBHeight;
+color Yallow=#06ADC1, Poople=#00E1FC, buttonColour;
+int centerX, centerY;
 //
 void setup() 
 {
@@ -24,7 +26,15 @@ void setup()
   int appWidth = displayWidth, appHeight = displayHeight; 
   println (width, height, displayWidth, displayHeight);
   println(appWidth, appHeight);
-
+  quitButtonX = centerX - appWidth*1/9; //1/4 on one-half, 1/4 on other half
+  quitButtonY = centerY - appHeight*1/9;
+  quitButtonWidth = appWidth*1/4;
+  quitButtonHeight = appHeight*1/4;
+  //
+  quitButtonA = centerX - appWidth*5/18; //1/4 on one-half, 1/4 on other half
+  quitButtonB = centerY - appHeight*1/18;
+  quitButtonAWidth = appWidth*3/16;
+  quitButtonBHeight = appHeight*3/16;
 String orientation = ( width>= height ) ? "Landscape or Square": "Portrait";
 println("Display Orientation:", orientation);
 if( orientation=="Portrait") println("Rotate your phone");
@@ -75,8 +85,8 @@ fill(#EAAD61);
 //rect(rectFaceX, rectFaceY, rectFaceWidth, rectFaceHeight);
 ellipse(faceX, faceY, faceDiameter, faceDiameter);
 fill(#FFFFFF);
-rect (titleX*1/20, titleY*1/4, titleWidth, titleHeight);
-rect (titleX*1/90, titleY*5/8, titleWidth, titleHeight);
+//rect (titleX*1/20, titleY*1/4, titleWidth, titleHeight);
+//rect (titleX*1/90, titleY*5/8, titleWidth, titleHeight);
  //background(random(120, 255));
 }
 //
@@ -85,14 +95,30 @@ void draw()
 {
   //background(random(120, 255));
 //
- if ( nightMode==true ) //Night Mode Choices
-  {
+if ( mouseX>quitButtonX && mouseX<quitButtonX+quitButtonWidth && mouseY>quitButtonY && mouseY<quitButtonY+quitButtonHeight ) {
+    buttonColour = Yallow;
+  } else {
+    buttonColour = Poople;
+  }
+  
+  //if ( mouseX>quitButtonA && mouseX<quitButtonA+quitButtonAWidth && mouseY>quitButtonB && mouseY<quitButtonB+quitButtonBHeight  ) {
+    //buttonColour = Yallow;
+ // } else {
+   // buttonColour = Poople;
+ // }
+  println("X-value", quitButtonX, mouseX, quitButtonX+quitButtonWidth, "\t\t Look at the middle value");
+  println("Y-value", quitButtonY, mouseY, quitButtonY+quitButtonHeight, "\t\t Look at the middle value");
+  //
+  fill(buttonColour);
+  rect ( quitButtonX, quitButtonY, quitButtonWidth, quitButtonHeight );
+  //fill(resetWhite);
+ //End of ButtonCode
+ if ( nightMode==true ) {
     backgroundBlue = 0;
     strokeColour = yellowNightMode;
     fillColour = purpleNightMode;
     println("CRAZYTIME");
-  } else
-  {
+  }else{
     backgroundBlue = int( random(255) );
     strokeColour = yellow;
     fillColour = Porple;
@@ -103,8 +129,8 @@ fill(purple); //Ink, hexidecimal copied from Color Selector
 textAlign(LEFT, LEFT); //Align X&Y, see Processing.org / Reference
 //Values: [ LEFT | CENTER | RIGHT ] & [ TOP | CENTER | BOTTOM | BASELINE ]
 textFont(titleFont, 50); //Change the number until it fits
-text(title, titleX*1/20, titleY*1/4, titleWidth, titleHeight);
-text(No1, titleX*1/90, titleY*5/8, titleWidth, titleHeight);
+text(title, titleX*1/15, titleY*3/35, titleWidth, titleHeight);
+//text(No1, titleX*1/90, titleY*5/8, titleWidth, titleHeight);
 fill(resetDefaultInk);
 //Measle
 float measleDiameter = random( smallerDisplayDimension*1/100, smallerDisplayDimension*1/25);
@@ -151,15 +177,16 @@ strokeWeight(mouthOpen); //testing: 100=400/4, mouthOpen=height*1/4
 strokeWeight(reset); // reset to 1 pixel
 image(mouthpic1, mouthX1*6/7, mouthY1*6/8, mouthX2*2/4, mouthY2*1/5);
 
-}
- 
-//End draw
-void keypressed() {
-   if ( key == 'F' || key == 'f' ); 
-  //if ( key == CODED && keyCode == LEFT) nightMode = false;
-};//End keypressed
+}//End draw
+void keyPressed() {
+   if ( key== 'Q' || key== 'q' );
+   //
+}//End keypressed
 //
-void mousepressed() {
-};//End mousepressed
+void mousePressed() 
+{
+    if ( mouseX>quitButtonX && mouseX<quitButtonX+quitButtonWidth && mouseY>quitButtonY && mouseY<quitButtonY+quitButtonHeight ) exit();
+    if ( mouseX>quitButtonA && mouseX<quitButtonA+quitButtonAWidth && mouseY>quitButtonB && mouseY<quitButtonB+quitButtonBHeight ) exit();
+}//End mousepressed
 //
 //End Main Program;
