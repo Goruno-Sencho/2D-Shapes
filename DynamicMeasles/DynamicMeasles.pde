@@ -33,7 +33,7 @@ void setup()
   //
   quitButtonA = centerX - appWidth*5/18; //1/4 on one-half, 1/4 on other half
   quitButtonB = centerY - appHeight*1/18;
-  quitButtonAWidth = appWidth*3/16;
+  quitButtonAWidth = appWidth*1/18;
   quitButtonBHeight = appHeight*3/16;
 String orientation = ( width>= height ) ? "Landscape or Square": "Portrait";
 println("Display Orientation:", orientation);
